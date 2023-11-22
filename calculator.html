@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <div id="container">
+        <div id="calculator">
+            <div id="display"></div>
+            <div id="keys">
+                <button class="operator" onclick="clickedOp('add')" id="add">+</button>
+                <button class="operator" onclick="clickedOp('sub')" id="sub">-</button>
+                <button class="operator" onclick="clickedOp('mul')" id="multi">&times;</button>
+                <button class="operator" onclick="clickedOp('divi')" id="divid">&divide;</button> 
+                <button id="seven" onclick="clickedNum(7)">7</button>
+                <button id="eight" onclick="clickedNum(8)">8</button>
+                <button id="nine" onclick="clickedNum(9)">9</button>
+                <button id="four" onclick="clickedNum(4)">4</button>
+                <button id="five" onclick="clickedNum(5)">5</button>
+                <button id="six" onclick="clickedNum(6)">6</button>
+                <button id="one" onclick="clickedNum(1)">1</button>
+                <button id="two" onclick="clickedNum(2)">2</button>
+                <button id="three" onclick="clickedNum(3)">3</button>
+                <button id="zero" onclick="clickedNum(0)">0</button>
+                <button onclick="clickedNum('.')">.</button>
+                <button onclick="clearAll()">AC</button>
+                <button id="equals" onclick="equals()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+    background-color: #333333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+button {
+    width: 100px;
+    height: 60px;
+    text-decoration: none;
+}
+
+#calculator {
+    border-radius: 12px;
+    box-shadow: 0 0 40px 0 px rgba(0, 0, 0, 0.15);
+    max-width: 25em;
+    overflow: hidden;
+}
+
+#display {
+    background-color: #222222;
+    color: #fff;
+    font-size: 3em;
+    padding: 0.5em 0.75em;
+    text-align: right;
+    word-spacing: 0.1;
+}
+
+#keys {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: #999;
+}
+
+#keys button.operator {
+    background-color: #eee;
+}
+
+#keys button.operator:active {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2) inset;
+    background-color: #e1e1e1;
+}   
+
+#keys button {
+    background-color: #fff;
+    position: relative;
+    text-align: center;
+    padding: 0.5em 1.25em;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#keys button:active {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2) inset;
+    background-color: #f2f2f2;
+}
+
+#equals {
+    height: 243px;
+    grid-column: -2;
+    grid-row: 2 / span 4;
+    background-image: linear-gradient(to bottom, #fe886a, #ff7033);
+}
+
+#equals:active {
+    background-image: linear-gradient(to bottom, #fe7451, #fe5e1a);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+#keys button#pressed {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2) inset;
+    background-color: #d4d4d4;
+}
+
