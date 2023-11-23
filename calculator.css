@@ -67,9 +67,9 @@ button {
 }
 
 #equals {
-    height: 243px;
+    height: 182px;
     grid-column: -2;
-    grid-row: 2 / span 4;
+    grid-row: 3 / span 3;
     background-image: linear-gradient(to bottom, #fe886a, #ff7033);
 }
 

@@ -3,6 +3,8 @@ let calc = [];
 let numCount = 0;
 let decimalUsed = false;
 let opClicked = false;
+let negative = false;
+let originalNum;
 
 display.innerHTML += "0";
 
@@ -11,25 +13,30 @@ function Getting(id){
 }
 
 function clickedNum(string){
+
     if(numCount === 0 || opClicked){
         if(string === '.' && !decimalUsed){
             display.innerHTML = "."
             decimalUsed = true;
             numCount = 1;
             opClicked = false;
+            originalNum = display.textContent;
         } else if(string !== '.'){
             display.innerHTML = string;
             numCount = 1;
             opClicked = false;
+            originalNum = display.textContent;
         }
     } else {
         if(string === '.' && !decimalUsed){
             display.innerHTML += string;
             decimalUsed = true;
             opClicked = false;
+            originalNum = display.textContent;
         } else if(string !== '.'){
             display.innerHTML += string;
             opClicked = false;
+            originalNum = display.textContent;
         }
     }
 }
@@ -38,6 +45,7 @@ function clickedOp(string){
     calc.push(display.textContent);
     opClicked = true;
     decimalUsed = false;
+    originalNum = "";
 
     if(string === "add"){
         addition.id = "pressed";
@@ -62,22 +70,44 @@ function clickedOp(string){
     }
 }
 
-function equals(){
-    calc.push(display.textContent);
-    let num1 = parseFloat(calc[0]);
-    let num2 = parseFloat(calc[1]);
-    numCount = 0;
-
-    if(addition.id === "pressed"){
-        display.innerHTML = num1 + num2;
-    } else if(subtract.id === "pressed"){
-        display.innerHTML = num1 - num2;
-    } else if(multiply.id === "pressed"){
-        display.innerHTML = num1 * num2;
-    } else if(division.id === "pressed"){
-        display.innerHTML = num1 / num2;
+function changeSign(){
+    if(negative){
+        negative = false;
+    } else {
+        negative = true;
     }
 
+    if(display.innerHTML !== "0" && negative){
+        display.innerHTML = "-" + originalNum;
+    } else if(!negative){
+        display.innerHTML = originalNum;
+    }
+}
+
+function equals(){
+    calc.push(display.textContent);
+    numCount = 0;
+    let num1 = parseFloat(calc[0]);
+    let num2 = parseFloat(calc[1]);
+    let result;
+
+    if(addition.id === "pressed"){
+        result = num1 + num2;
+    } else if(subtract.id === "pressed"){
+        result = num1 - num2;
+    } else if(multiply.id === "pressed"){
+        result = num1 * num2;
+    } else if(division.id === "pressed"){
+        result = num1 / num2;
+    }
+
+    if(!Number.isInteger(result) && !isNaN(result)){
+        if(result.toString().length > 10){
+            result = result.toFixed(9);
+        }
+    }
+
+    display.innerHTML = result;
     resetOp();
 }
 
@@ -95,6 +125,8 @@ function clearAll(){
     opClicked = false;
     resetOp();
     calc = [];
+    negative = false;
+    originalNum = "";
 }
 
 document.addEventListener("keyup", e => {
@@ -133,7 +165,6 @@ document.addEventListener("keyup", e => {
     } else if(e.key === "Escape"){
         clearAll();
     }
-    
 });
 
 let addition = Getting("add");
@@ -149,3 +180,4 @@ let six = Getting("six");
 let seven = Getting("seven");
 let eight = Getting("eight");
 let nine = Getting("nine");
+let clear = Getting("clearing");
