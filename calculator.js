@@ -85,7 +85,7 @@ function changeSign(){
 }
 
 function equals(){
-    calc.push(display.textContent);
+    calc.splice(1, 0, display.textContent);
     numCount = 0;
     let num1 = parseFloat(calc[0]);
     let num2 = parseFloat(calc[1]);
@@ -108,6 +108,8 @@ function equals(){
     }
 
     display.innerHTML = result;
+    calc[0] = result;
+    calc[1] = null;
     resetOp();
 }
 
